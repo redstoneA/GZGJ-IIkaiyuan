@@ -3,13 +3,15 @@ from tkinter import ttk
 import brushscreen
 import cclliicckk
 import mb
+from tkinter import messagebox
+import time
 
 
-# 懒得注释，甚至AI在注释的时候都搞懵了
+# 懒得注释
 class GZGJ:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("GZGJ II实用工具1.1(开源版)")
+        self.root.title("GZGJ II实用工具1.2(开源版)")
         self.root.geometry("600x400")
         self.notebook = ttk.Notebook(self.root)
         self.page1 = ttk.Frame(self.notebook)
@@ -29,16 +31,24 @@ class GZGJ:
         self.brslabel3 = tk.Label(self.page1, text="请输入要刷屏的文字")
         self.brstx2 = tk.StringVar()
         self.brsentry2 = tk.Entry(self.page1, textvariable=self.brstx2)
+        self.brslabel4 = tk.Label(self.page1, text="请输入要刷屏的间隔时间(秒)")
+        self.brstx3 = tk.StringVar()
+        self.brsentry3 = tk.Entry(self.page1, textvariable=self.brstx3)
         self.brsbutton1 = tk.Button(self.page1, text="开始刷屏", command=self.brc)
-        self.brslabelint = tk.Label(self.page1, text="次数应为整数", fg="red")
+        self.brslabelint = tk.Label(self.page1, text="次数应为整数或间隔应为浮点数", fg="red")
         self.brslabelshua = tk.Label(self.page1, text="将于5秒后启动刷屏")
         self.brslabelyiqidong = tk.Label(self.page1, text="刷屏已启动")
+        self.brsit1 = tk.IntVar()
+        self.brscheckbutton1 = tk.Checkbutton(self.page1, text="银杏化刷屏", variable=self.brsit1)
         self.brslabel1.pack()
         self.brslabel2.pack()
         self.brsentry1.pack()
         self.brslabel3.pack()
         self.brsentry2.pack()
+        self.brslabel4.pack()
+        self.brsentry3.pack()
         self.brsbutton1.pack()
+        self.brscheckbutton1.pack()
 
         self.cclabel1 = tk.Label(self.page2, text="Cclliicckk连点器")
         self.ccbutton1 = tk.Button(self.page2, text="有限连点", command=self.cc1)
@@ -79,17 +89,11 @@ class GZGJ:
 
     def brc(self):
         self.int_or_not = self.brstx1.get()
+        self.float_or_not = self.brstx3.get()
         try:
             self.int_yes = int(self.int_or_not)
-            self.brslabelint.forget()
-            self.brslabel1.forget()
-            self.brslabel2.forget()
-            self.brsentry1.forget()
-            self.brslabel3.forget()
-            self.brsentry2.forget()
-            self.brsbutton1.forget()
-            self.brslabelshua.pack()
-            self.root.after(4000, self.brsc_update)
+            self.float_yes = float(self.float_or_not)
+            self.brsc_update()
         except ValueError:
             self.brslabelint.pack()
 
@@ -100,15 +104,16 @@ class GZGJ:
         self.brslabel3.pack()
         self.brsentry2.pack()
         self.brsbutton1.pack()
+        self.brslabelint.forget()
 
     def brsc_update(self):
-        self.brslabelshua.forget()
-        self.brslabelyiqidong.pack()
-        self.root.after(1000, self.brsc_update2)
+        self.messagebox1 = messagebox.showinfo("提示", "将于五秒后开始刷屏")
+        if self.messagebox1:
+            self.brsc_update2()
 
     def brsc_update2(self):
-        brushscreen.brushscreen(self.int_yes, str(self.brstx2.get()))
-        self.brslabelyiqidong.forget()
+        time.sleep(5)
+        brushscreen.brushscreen(self.int_yes, str(self.brstx2.get()), float(self.brstx3.get()), self.brsit1.get())
         self.brsc_pack()
 
     def cc1(self):
@@ -150,6 +155,7 @@ class GZGJ:
         self.cclabel2.forget()
         self.ccentry1.forget()
         self.ccbutton3.forget()
+        self.cclabel4.forget()
         self.cclabel1.pack()
         self.ccbutton1.pack()
         self.ccbutton2.pack()
@@ -195,6 +201,7 @@ class GZGJ:
         self.c = self.mbit1.get()
         try:
             self.c_ok = int(self.c)
+            self.mblabelerror.forget()
             mb.mb("Π表", self.c_ok)
         except ValueError:
             self.mblabelerror.pack()
@@ -203,6 +210,7 @@ class GZGJ:
         self.c = self.mbit1.get()
         try:
             self.c_ok = int(self.c)
+            self.mblabelerror.forget()
             mb.mb("平方表", self.c_ok)
         except ValueError:
             self.mblabelerror.pack()
@@ -211,6 +219,7 @@ class GZGJ:
         self.c = self.mbit1.get()
         try:
             self.c_ok = int(self.c)
+            self.mblabelerror.forget()
             mb.mb("乘法表", self.c_ok)
         except ValueError:
             self.mblabelerror.pack()
@@ -225,4 +234,5 @@ class GZGJ:
         self.mbbuttonqueding.forget()
         self.mbbuttonqueding2.forget()
         self.mbbuttonqueding3.forget()
+        self.mblabelerror.forget()
         self.mbbuttonback.forget()
