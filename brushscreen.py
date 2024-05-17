@@ -24,7 +24,7 @@ def brushscreen(cishu, neirong, jiange, yinxin):
     for i in range(cishu):
         # 如果 yinxin 为 1，则在内容前后添加额外信息
         if yinxin == 1:
-            pyperclip.copy("("+neirong+"总次数"+str(cishu)+"剩余"+str(cishu-i-1)+"次"+")")
+            pyperclip.copy(neirong+"(总次数"+str(cishu)+"剩余"+str(cishu-i-1)+"次"+")")
         # 按指定间隔时间等待
         time.sleep(jiange)
         # 使用 Ctrl+V 快捷键粘贴内容，并按下 Enter 键
