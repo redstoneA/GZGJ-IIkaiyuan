@@ -14,7 +14,7 @@ def brushscreen(cishu, neirong, jiange, yinxin):
     - yinxin: int, 是否在内容前后添加额外信息。1 表示添加，其他值不添加。
 
     返回值:
-    无
+    无。
     """
     # 备份当前剪贴板内容
     pa = pyperclip.paste()

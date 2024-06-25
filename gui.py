@@ -3,6 +3,7 @@ from tkinter import ttk
 import brushscreen
 import cclliicckk
 import mb
+import zp
 from tkinter import messagebox
 import time
 
@@ -22,6 +23,7 @@ class GZGJ:
         self.notebook.add(self.page1, text="刷屏工具")
         self.notebook.add(self.page2, text="连点器")
         self.notebook.add(self.page3, text="数学表生成器")
+        self.notebook.add(self.page4, text='图片格式互转')
         self.notebook.pack(expand=True, fill="both")
 
         self.brslabel1 = tk.Label(self.page1, text="Brsc全自动刷屏")
@@ -83,6 +85,37 @@ class GZGJ:
         self.mbbutton1.pack()
         self.mbbutton2.pack()
         self.mbbutton3.pack()
+
+        self.zplabel1 = tk.Label(self.page4, text="图片格式互转")
+        self.zplabeltishi = tk.Label(self.page4, text="初始图片格式")
+        self.zpradio_var_1 = tk.IntVar()
+        self.zpradiobutton1 = ttk.Radiobutton(self.page4, text=".jpg", value=1, variable=self.zpradio_var_1)
+        self.zpradiobutton2 = ttk.Radiobutton(self.page4, text=".png", value=2, variable=self.zpradio_var_1)
+        self.zpradiobutton3 = ttk.Radiobutton(self.page4, text=".bmp", value=3, variable=self.zpradio_var_1)
+        self.zpradiobutton4 = ttk.Radiobutton(self.page4, text=".gif", value=4, variable=self.zpradio_var_1)
+        self.zpradiobutton5 = ttk.Radiobutton(self.page4, text=".tif", value=5, variable=self.zpradio_var_1)
+        self.zpradiobutton6 = ttk.Radiobutton(self.page4, text=".webp", value=6, variable=self.zpradio_var_1)
+        self.zplabel2 = tk.Label(self.page4, text="图片原路径")
+        self.zpbuttonqueding = tk.Button(self.page4, text="确定", command=self.zp1)
+        self.zplabeltishi1 = tk.Label(self.page4, text="转换后图片格式")
+        self.zpbuttonqueding1 = tk.Button(self.page4, text="确定", command=self.zp2)
+        self.zpsv1 = tk.StringVar()
+        self.zpsv2 = tk.StringVar()
+        self.zplabel3 = tk.Label(self.page4, text="图片初始路径(带文件名不加文件格式)")
+        self.zpentry1 = tk.Entry(self.page4, textvariable=self.zpsv1)
+        self.zplabel4 = tk.Label(self.page4, text="图片转换后路径(带文件名不加文件格式)")
+        self.zpentry2 = tk.Entry(self.page4, textvariable=self.zpsv2)
+        self.zpbuttonqueding2 = tk.Button(self.page4, text="确定", command=self.zp3)
+        self.zpbuttonfanhui = tk.Button(self.page4, text="返回", command=self.zp4)
+        self.zplabel1.pack()
+        self.zplabeltishi.pack()
+        self.zpradiobutton1.pack()
+        self.zpradiobutton2.pack()
+        self.zpradiobutton3.pack()
+        self.zpradiobutton4.pack()
+        self.zpradiobutton5.pack()
+        self.zpradiobutton6.pack()
+        self.zpbuttonqueding.pack()
 
     def run(self):
         self.root.mainloop()
@@ -236,3 +269,73 @@ class GZGJ:
         self.mbbuttonqueding3.forget()
         self.mblabelerror.forget()
         self.mbbuttonback.forget()
+
+    def zp1(self):
+        try:
+            self.zppanduan = self.zpradio_var_1.get()
+            self.zpl = {1: "jpg", 2: "png", 3: "bmp", 4: "gif", 5: "tif", 6: "webp"}
+            self.zpchushigeshi = self.zpl[self.zppanduan]
+            self.zplabeltishi.forget()
+            self.zpradiobutton1.forget()
+            self.zpradiobutton2.forget()
+            self.zpradiobutton3.forget()
+            self.zpradiobutton4.forget()
+            self.zpradiobutton5.forget()
+            self.zpradiobutton6.forget()
+            self.zpbuttonqueding.forget()
+            self.zplabeltishi1.pack()
+            self.zpradiobutton1.pack()
+            self.zpradiobutton2.pack()
+            self.zpradiobutton3.pack()
+            self.zpradiobutton4.pack()
+            self.zpradiobutton5.pack()
+            self.zpradiobutton6.pack()
+            self.zpbuttonqueding1.pack()
+        except KeyError:
+            messagebox.showinfo("提示", "请选择图片格式")
+
+    def zp2(self):
+        try:
+            self.yanzheng = self.zpradio_var_1.get()
+            self.zhuanhuanhou = self.zpl[self.yanzheng]
+            self.zplabeltishi1.forget()
+            self.zpradiobutton1.forget()
+            self.zpradiobutton2.forget()
+            self.zpradiobutton3.forget()
+            self.zpradiobutton4.forget()
+            self.zpradiobutton5.forget()
+            self.zpradiobutton6.forget()
+            self.zpbuttonqueding1.forget()
+            self.zplabel3.pack()
+            self.zpentry1.pack()
+            self.zplabel4.pack()
+            self.zpentry2.pack()
+            self.zpbuttonqueding2.pack()
+            self.zpbuttonfanhui.pack()
+        except KeyError:
+            messagebox.showinfo("提示", "请选择图片格式")
+
+    def zp3(self):
+        try:
+            self.zpchushilujing = self.zpsv1.get()
+            self.zhuanhuanhoulujing = self.zpsv2.get()
+            zp.zp(self.zpchushilujing, self.zpchushigeshi, self.zhuanhuanhoulujing, self.zhuanhuanhou)
+        except ValueError:
+            messagebox.showinfo("提示", "所有框都要填写")
+
+    def zp4(self):
+        self.zplabel1.pack()
+        self.zplabeltishi.pack()
+        self.zpradiobutton1.pack()
+        self.zpradiobutton2.pack()
+        self.zpradiobutton3.pack()
+        self.zpradiobutton4.pack()
+        self.zpradiobutton5.pack()
+        self.zpradiobutton6.pack()
+        self.zpbuttonqueding.pack()
+        self.zplabel3.forget()
+        self.zpentry1.forget()
+        self.zplabel4.forget()
+        self.zpentry2.forget()
+        self.zpbuttonqueding2.forget()
+        self.zpbuttonfanhui.forget()
