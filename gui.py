@@ -79,13 +79,16 @@ class GZGJ:
         self.mbbutton2 = tk.Button(self.page3, text="平方表生成器", command=self.mb2)
         self.mbbutton3 = tk.Button(self.page3, text="乘法表生成器", command=self.mb3)
         self.mbit1 = tk.StringVar()
+        self.mbit2 = tk.StringVar()
         self.mbentry1 = tk.Entry(self.page3, textvariable=self.mbit1)
+        self.mbentry2 = tk.Entry(self.page3, textvariable=self.mbit2)
         self.mbbuttonqueding = tk.Button(self.page3, text="确定", command=self.mb4)
         self.mbbuttonqueding2 = tk.Button(self.page3, text="确定", command=self.mb5)
         self.mbbuttonqueding3 = tk.Button(self.page3, text="确定", command=self.mb6)
         self.mbbuttonback = tk.Button(self.page3, text="返回", command=self.mb7)
         self.mblabel2 = tk.Label(self.page3, text="请输入最大数")
-        self.mblabelerror = tk.Label(self.page3, text="最大数应为整数", fg="red")
+        self.mblabel3 = tk.Label(self.page3, text="请输入最小数")
+        self.mblabelerror = tk.Label(self.page3, text="最大数和最小数应为整数", fg="red")
         self.mblabel1.pack()
         self.mbbutton1.pack()
         self.mbbutton2.pack()
@@ -215,6 +218,8 @@ class GZGJ:
         self.mbbutton3.forget()
         self.mblabel2.pack()
         self.mbentry1.pack()
+        self.mblabel3.pack()
+        self.mbentry2.pack()
         self.mbbuttonqueding.pack()
         self.mbbuttonback.pack()
 
@@ -225,6 +230,8 @@ class GZGJ:
         self.mbbutton3.forget()
         self.mblabel2.pack()
         self.mbentry1.pack()
+        self.mblabel3.pack()
+        self.mbentry2.pack()
         self.mbbuttonqueding2.pack()
         self.mbbuttonback.pack()
 
@@ -235,33 +242,41 @@ class GZGJ:
         self.mbbutton3.forget()
         self.mblabel2.pack()
         self.mbentry1.pack()
+        self.mblabel3.pack()
+        self.mbentry2.pack()
         self.mbbuttonqueding3.pack()
         self.mbbuttonback.pack()
 
     def mb4(self):
         self.c = self.mbit1.get()
+        self.d = self.mbit2.get()
         try:
             self.c_ok = int(self.c)
+            self.d_ok = int(self.d)
             self.mblabelerror.forget()
-            mb.mb("Π表", self.c_ok)
+            mb.mb("Π表", self.c_ok, self.d_ok)
         except ValueError:
             self.mblabelerror.pack()
 
     def mb5(self):
         self.c = self.mbit1.get()
+        self.d = self.mbit2.get()
         try:
             self.c_ok = int(self.c)
+            self.d_ok = int(self.d)
             self.mblabelerror.forget()
-            mb.mb("平方表", self.c_ok)
+            mb.mb("平方表", self.c_ok, self.d_ok)
         except ValueError:
             self.mblabelerror.pack()
 
     def mb6(self):
         self.c = self.mbit1.get()
+        self.d = self.mbit2.get()
         try:
             self.c_ok = int(self.c)
+            self.d_ok = int(self.d)
             self.mblabelerror.forget()
-            mb.mb("乘法表", self.c_ok)
+            mb.mb("乘法表", self.c_ok, self.d_ok)
         except ValueError:
             self.mblabelerror.pack()
 
@@ -272,6 +287,8 @@ class GZGJ:
         self.mbbutton3.pack()
         self.mblabel2.forget()
         self.mbentry1.forget()
+        self.mblabel3.forget()
+        self.mbentry2.forget()
         self.mbbuttonqueding.forget()
         self.mbbuttonqueding2.forget()
         self.mbbuttonqueding3.forget()
