@@ -12,7 +12,7 @@ import time
 class GZGJ:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("GZGJ II实用工具1.5(开源版)")
+        self.root.title("GZGJ II实用工具1.6.1(开源版)")
         self.root.geometry("600x400")
         self.notebook = ttk.Notebook(self.root)
         self.page1 = ttk.Frame(self.notebook)
