@@ -4,6 +4,7 @@ import brushscreen
 import cclliicckk
 import mb
 import zp
+import ZZCode
 from tkinter import messagebox
 import time
 
@@ -12,7 +13,7 @@ import time
 class GZGJ:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("GZGJ II实用工具1.6.1(开源版)")
+        self.root.title("GZGJ II实用工具1.7(开源版)")
         self.root.geometry("600x400")
         self.notebook = ttk.Notebook(self.root)
         self.page1 = ttk.Frame(self.notebook)
@@ -45,6 +46,7 @@ class GZGJ:
         self.brsit2 = tk.IntVar()
         self.brscheckbutton2 = tk.Checkbutton(self.page1, text="列表读取模式", variable=self.brsit2)
         self.buttonbrscsysm = tk.Button(self.page1, text="列表读取模式使用说明", command=self.brscsysm)
+        self.buttonbrscbj = tk.Button(self.page1, text="编辑列表txt", command=self.brscbj)
         self.brslabel1.pack()
         self.brslabel2.pack()
         self.brsentry1.pack()
@@ -56,6 +58,7 @@ class GZGJ:
         self.brscheckbutton1.pack()
         self.brscheckbutton2.pack()
         self.buttonbrscsysm.pack()
+        self.buttonbrscbj.pack()
 
         self.cclabel1 = tk.Label(self.page2, text="Cclliicckk连点器")
         self.ccbutton1 = tk.Button(self.page2, text="有限连点", command=self.cc1)
@@ -158,8 +161,12 @@ class GZGJ:
         self.brsc_pack()
 
     def brscsysm(self):
-        tk.messagebox.showinfo("提示", "在程序的文件夹下的l.txt中写入一个列表，程序将会自动读取并依次刷屏，使用列表读取模式，刷屏内容将不会生效")
+        tk.messagebox.showinfo("提示", "在程序的文件夹下的l.txt中写入一个列表，程序将会自动读取并依次刷屏，使用列表读取模式，“刷屏内容”将不会生效")
 
+    def brscbj(self):
+        self.root2 = tk.Tk()
+        a = ZZCode.ZZCode(self.root2)
+        a.open_file1()
     def cc1(self):
         self.cclabel2.pack()
         self.ccentry1.pack()

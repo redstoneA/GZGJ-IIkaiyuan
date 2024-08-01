@@ -20,7 +20,7 @@ def brushscreen(cishu, neirong, jiange, yinxin, liebiaoshuaping):
     if liebiaoshuaping == 1:
         with open("l.txt", 'r', encoding='utf-8') as file:
             content = file.read()
-            rcontent = content.split('\n')
+            rcontent = content.split()
             xs = len(rcontent)
             xsjz = xs-1
     # 备份当前剪贴板内容
