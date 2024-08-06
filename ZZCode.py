@@ -12,7 +12,7 @@ class ZZCode:
         master.config(menu=self.menu)
         self.file_menu = tk.Menu(self.menu, tearoff=0)
         self.menu.add_cascade(label="文件", menu=self.file_menu)
-        self.file_menu.add_command(label="打开", command=self.open_file)
+        # self.file_menu.add_command(label="打开", command=self.open_file)
         self.file_menu.add_command(label="保存", command=self.save_file)
         self.file_menu.add_separator()
         # self.file_menu.add_command(label="运行", command=self.run_code)
