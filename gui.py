@@ -13,8 +13,10 @@ import time
 class GZGJ:
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("GZGJ II实用工具1.7.2(开源版)")
-        self.root.geometry("600x400")
+        self.root.title("GZGJ II实用工具1.8(开源版)")
+        self.root.geometry("600x450")
+        self.root.resizable(width=False, height=False)
+        self.root.wm_attributes("-topmost", True)
         self.notebook = ttk.Notebook(self.root)
         self.page1 = ttk.Frame(self.notebook)
         self.page2 = ttk.Frame(self.notebook)
@@ -47,6 +49,8 @@ class GZGJ:
         self.brscheckbutton2 = tk.Checkbutton(self.page1, text="列表读取模式", variable=self.brsit2)
         self.buttonbrscsysm = tk.Button(self.page1, text="列表读取模式使用说明", command=self.brscsysm)
         self.buttonbrscbj = tk.Button(self.page1, text="编辑列表txt", command=self.brscbj)
+        self.brslabel5 = tk.Label(self.page1, text="按下“ctrl+B”即可暂停刷屏")
+        self.brslabel6 = tk.Label(self.page1, text="按下ctrl+D即可中途停止刷屏")
         self.brslabel1.pack()
         self.brslabel2.pack()
         self.brsentry1.pack()
@@ -59,6 +63,8 @@ class GZGJ:
         self.brscheckbutton2.pack()
         self.buttonbrscsysm.pack()
         self.buttonbrscbj.pack()
+        self.brslabel5.pack()
+        self.brslabel6.pack()
 
         self.cclabel1 = tk.Label(self.page2, text="Cclliicckk连点器")
         self.ccbutton1 = tk.Button(self.page2, text="有限连点", command=self.cc1)

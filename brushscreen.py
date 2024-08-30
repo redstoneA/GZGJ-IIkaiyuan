@@ -1,7 +1,23 @@
 import pyautogui
 import pyperclip
 import time
+import keyboard
 
+
+abc = True
+efg = True
+
+def zanting():
+    global abc
+    abc = not abc
+
+keyboard.add_hotkey('ctrl+B', zanting)
+
+def jieshu():
+    global efg
+    efg = False
+
+keyboard.add_hotkey('ctrl+D', jieshu)
 
 def brushscreen(cishu, neirong, jiange, yinxin, liebiaoshuaping):
     """
@@ -17,6 +33,7 @@ def brushscreen(cishu, neirong, jiange, yinxin, liebiaoshuaping):
     返回值:
     无。
     """
+    global  abc
     if liebiaoshuaping == 1:
         with open("l.txt", 'r', encoding='utf-8') as file:
             content = file.read()
@@ -28,7 +45,15 @@ def brushscreen(cishu, neirong, jiange, yinxin, liebiaoshuaping):
     # 将需要刷屏的内容复制到剪贴板
     pyperclip.copy(neirong)
     # 循环执行刷屏操作指定次数
+
     for i in range(cishu):
+        if abc is False:
+            while True:
+                time.sleep(0.1)
+                if abc is True:
+                    break
+        if efg is False:
+            break
         if liebiaoshuaping == 1:
             # 如果liebiaoshuaping为1，则读取列表内容
             xsjz = xsjz + 1
@@ -49,3 +74,6 @@ def brushscreen(cishu, neirong, jiange, yinxin, liebiaoshuaping):
         pyautogui.press('enter')
     # 刷屏完成后，恢复原始剪贴板内容
     pyperclip.copy(pa)
+    abc = True
+    keyboard.clear_hotkey('ctrl+B')
+    keyboard.clear_hotkey('ctrl+D')
