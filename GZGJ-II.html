@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>GZGJ-II官网</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* 深灰色背景 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 100px; /* 图标大小可以根据实际调整 */
+            height: auto;
+        }
+
+        .header h1 {
+            color: white;
+            margin: 10px 0;
+        }
+
+        .header p {
+            color: white;
+        }
+
+        .download-button {
+            background-color: #4CAF50; /* 绿色按钮 */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 0;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .content {
+            color: white;
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0; /* 初始透明度为 0 */
+            transition: opacity 0.5s ease-in-out; /* 添加过渡效果 */
+        }
+
+        .content h1, .content h2, .content h3, .content a {
+            color: white;
+        }
+
+        .content a {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="GZGJ-II.webp" alt="GZGJ-II图标">
+        <h1>GZGJ-II官网</h1>
+        <a href="https://wwfx.lanzn.com/iFb412m5deli" class="download-button">蓝奏云下载</a>
+        <a href="https://github.com/redstoneA/GZGJ-IIkaiyuan" class="download-button">GitHub下载</a>
+    </div>
+    <div class="header">
+        <p>↓下划查看更多信息</p>
+    </div>
+    <div class="content">
+        <h1>GZGJ-II (V1.7.2) 简介</h1>
+        <p>GZGJ-II（V1.7.2）是一款多功能的实用工具软件，主要功能包括：</p>
+        <h2>主要功能</h2>
+        <h3>刷屏工具</h3>
+        <p>用户可以设置刷屏次数、刷屏文字以及刷屏间隔时间，并支持银杏化刷屏和列表读取模式。</p>
+        <h3>连点器</h3>
+        <p>提供有限连点和无限连点两种模式，用户可选择左键或右键连点，并可通过快捷键控制连点器的启停。</p>
+        <h3>数学表生成器</h3>
+        <p>能够生成Π表、平方表和乘法表，用户输入最大数和最小数后自动生成相应的数学表。</p>
+        <h3>图片格式互转</h3>
+        <p>支持多种图片格式之间的转换，用户可以选择初始图片格式、输入图片路径并指定转换后的格式。</p>
+        <h1>注意事项</h1>
+        <p>1. 该软件界面友好，操作简便，适用于多种场景需求。</p>
+    </div>
+
+    <script>
+        let lastScrollTop = 0;
+        const contentElement = document.querySelector('.content');
+
+        function handleScroll() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                // 向下滚动
+                contentElement.style.opacity = 1;
+            } else {
+                // 向上滚动
+                contentElement.style.opacity = 0;
+            }
+            lastScrollTop = scrollTop;
+        }
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>
